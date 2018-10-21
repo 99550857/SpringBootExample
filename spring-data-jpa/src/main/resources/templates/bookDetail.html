@@ -1,0 +1,79 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style>
+    .top {
+        /*position: fixed;*/
+        /*top:0;*/
+        /*left: 0;*/
+        width: 100%;
+        height: 50px;
+        z-index: 999;
+
+    }
+
+    hr {
+
+        margin-top: 20px;
+        margin-left: 20%;
+        margin-right: 20%;
+        height: 3px;
+        background-color: #eee;
+    }
+
+    .top ol {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .center {
+        margin-top: 100px;
+        text-align: center;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .card {
+        width: 800px;
+        height: 600px;
+        float: left;
+    }
+
+    .card-left {
+        width: 250px;
+        height: 600px;
+        display: inline-block;
+        margin-top: -400px;
+    }
+</style>
+
+<body>
+<div class="top">
+    <ol class="breadcrumb">
+        <li class="home"><a href="/books/all">Books</a></li>
+        <li th:text="${book.name}">bookName</li>
+    </ol>
+    <hr>
+</div>
+<div class="center">
+    <div class="card">
+        <div style="width: 360px;height: 400px">
+            <a href="/books/all"><img th:src="${book.cover}" style="width: 340px;height: 400px"></a>
+            <p th:text="${book.price}" style="margin-top: 30px;font-size: 20px;color: red"></p>
+        </div>
+
+        <div class="card-left">
+            <h3 th:text="${book.name}"></h3>
+            <h4 th:text="${book.author}"></h4>
+            <span th:text="${book.detail}">
+                </span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

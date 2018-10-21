@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="ws">
+        <div >
+            <label>
+            <textarea id="chatroom" v-html="msg"  style="width: 600px;height: 500px;">
+
+            </textarea>
+            </label>
+        </div>
+        <input id="text" type="text"/>
+        <button onclick="sendMsg()">Send</button>
+        <!--<button onclick="closeWS()" :disabled="!opened">Close</button>-->
+        <!--<button onclick="openWS()"  :disabled="opened" >Open</button>-->
+        <!--<div v-html="msg"></div>-->
+    </div>
+</body>
+<script type="text/javascript">
+    var socket;
+    var textarea;
+    var msg;
+    // if (typeof(WebSocket) === "undefined") {
+    //     console.log("您的浏览器不支持WebSocket");
+    // } else {
+    //     console.log("您的浏览器支持WebSocket");
+    //     //实现化WebSocket对象，指定要连接的服务器地址与端口建立连接
+    //     socket = new WebSocket("ws://localhost:8080/websocket");
+    //
+    //     //打开事件
+    //     socket.onopen = function () {
+    //         console.log("Socket已打开");
+    //         socket.send("这是来自客户端的消息:" + new Date());
+    //     };
+    //
+    //     //获得消息事件
+    //     socket.onmessage = function (msg) {
+    //         console.log(msg.data);
+    //         alert(msg.data);
+    //     };
+    //
+    //     //关闭事件
+    //     socket.onclose = function () {
+    //         console.log("Socket已关闭");
+    //     };
+    //
+    //     //发生了错误事件
+    //     socket.onerror = function () {
+    //         alert("Socket发生了错误");
+    //     }
+
+    var chatVue = new Vue({
+        el: '#ws',
+        data:{
+            msg: "欢迎...\n",
+            opened: false
+        },
+        mounted: function(){
+            initWs();
+        }
+    });
+    function initWs() {
+        textarea = document.getElementById("chatroom");
+
+        //textarea.innerText=msg;
+        //check if your browser supports WebSocket
+        if (typeof(WebSocket) === "undefined") {
+
+            alert('Sorry, websocket not supported by your browser.')
+        }
+        else {
+            socket = new WebSocket("ws://localhost:8080/webSocket");
+        }
+        //Error callback
+        socket.onerror = function () {
+            setMessageContent("error!");
+            chatVue.opened = false;
+        };
+        //socket opened callback
+        socket.onopen = function (event) {
+            setMessageContent("websocket opened");
+            chatVue.opened = true;
+        };
+        //message received callback
+        socket.onmessage = function (event) {
+            setMessageContent(event.data);
+        };
+        //socket closed callback
+        socket.onclose = function () {
+            setMessageContent("websocket closed");
+            chatVue.opened = false;
+        };
+        //when browser window closed, close the socket, to prevent server exception
+        window.onbeforeunload = function () {
+            socket.close();
+        };
+    }
+    //update message to vue and then in div
+    function setMessageContent(content) {
+        chatVue.msg += content  + '\n';
+        textarea.innerText=chatVue.msg;
+    }
+    //click to close the websocket
+    function closeWS() {
+        socket.close();
+        chatVue.opened = false;
+    }
+    //click to open the websocket
+    function openWS() {
+        initWs();
+    }
+    //click to send message
+    function sendMsg() {
+        var message = document.getElementById('text').value;
+        socket.send(message);
+    }
+</script>
+</html>

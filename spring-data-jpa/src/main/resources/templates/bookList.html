@@ -1,0 +1,92 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>-->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<style>
+    .top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        z-index: 999;
+
+    }
+
+    .top ol {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .home {
+        font-size: 25px;
+    }
+
+    hr {
+
+        margin-top: 20px;
+        margin-left: 20%;
+        margin-right: 20%;
+        height: 3px;
+        background-color: #eee;
+    }
+
+    .center {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 120px;
+    }
+
+    .card {
+        margin: 15% 15% 15% 15%;
+    }
+
+    .book-img {
+        width: 100%;
+        height: 80px;
+    }
+
+    .book-name {
+
+    }
+
+    .book-author {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+    }
+
+</style>
+<body>
+
+<div class="top">
+    <ol class="breadcrumb">
+        <li class="home"><a href="#">所有书籍</a></li>
+        <!--<li><a href="#">bookName</a></li>-->
+    </ol>
+    <hr>
+
+</div>
+
+<div class="center">
+    <div style="height: 300px;float: left;width: 182px" th:each="book:${booksList}">
+        <div class="card">
+            <a th:href="@{/books/{bookId}(bookId=${book.id})}"><img th:src="${book.cover}" class="img-thumbnail"
+                                                                    style="width: 100%;height: 150px;"></a>
+            <h4 class="book-name" th:text="${book.name}"></h4>
+            <span class="book-author" th:text="${book.author}"></span>
+            <span style="white-space: nowrap;
+        display: inline-block;margin-left: 15px">著</span>
+            <p style="margin-top: 16px" class="price">￥ <span th:text="${book.price}"></span></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

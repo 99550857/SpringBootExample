@@ -1,0 +1,286 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .left {
+            /*float: left;*/
+            /*width: 100%;*/
+            /*height: 300px;*/
+            /*margin-right: -300px;*/
+            width: 200px;
+            float: left;
+            margin-left: -100%;
+            right: 200px;
+        }
+
+        .left.right {
+            position: relative;
+            _display: inline;
+        }
+
+        .right {
+            /*float: right;*/
+            /*width: 60px;*/
+            width: 300px;
+            float: right;
+            margin-right: -300px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #292525;
+            height: 90px;
+            position: fixed;
+            top: 0;
+        }
+
+        .logo {
+            margin-left: 80px;
+            margin-top: 10px;
+            width: 117px;
+            height: 51px;
+        }
+
+        .topTitle {
+            font-size: 29px;
+            color: aliceblue;
+            text-align: center;
+            /*margin-left: 400px;*/
+            /*margin-right: auto;*/
+            /*margin-top: 20px;*/
+            float: left;
+            width: 100%;
+            margin-top: -30px;
+        }
+
+        .topnavigationbar {
+            width: 100%;
+            margin-top: 90px;
+            top: 90px;
+        }
+
+        .topbar {
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .topbar ul {
+            text-align: center;
+        }
+
+        .topbar ul li {
+            font-size: 18px;
+
+            list-style: none; /* 将默认的列表符号去掉 */
+            padding: 0; /* 将默认的内边距去掉 */
+            margin: 0; /* 将默认的外边距去掉 */
+            float: left;
+            border: ridge 1px silver;
+            width: 120px;
+        }
+
+        .centerblock {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .leftcard {
+            margin-left: auto;
+            border: solid 1px silver;
+            border-radius: 10px;
+            width: 820px;
+            height: 330px;
+        }
+
+        .carddate {
+            position: relative;
+            top: -25px;
+            left: 98px;
+            font-size: 10px;
+            color: darkgray;
+        }
+
+        .leftcard div img {
+            width: 60px;
+            height: 60px;
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+
+        .cardconent {
+            text-align: left;
+            margin-left: 30px;
+            margin-right: 220px;
+        }
+
+        .cardconent span b {
+            font-size: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cardcomment {
+            float: right;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+
+        .cardcomment i {
+            font-size: 18px;
+            margin-left: 15px;;
+        }
+
+        .cardcomment span {
+            font-size: 18px;
+            margin-left: 15px;
+        }
+
+        .rightcard {
+            text-align: center;
+        }
+
+        .rightcard img {
+            width: 300px;
+            height: 160px;
+            opacity: 0.8;
+        }
+
+        .rightcard h3 {
+            color: aliceblue;
+            margin-top: -110px;
+
+            position: relative;
+            z-index: 20;
+        }
+
+        .rightcard span {
+            margin-top: -50px;
+            position: relative;
+            color: aliceblue;
+            font-size: 18px;
+            z-index: 20;
+            border: solid 1px silver;
+            border-radius: 25px;
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img class="logo" src="logo.png">
+    <span class="topTitle ">#应用推荐</span>
+    <span class="icon-search"></span>
+</div>
+
+
+<div class="topnavigationbar">
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container topbar">
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="#">正版软件</a></li>
+                <li><a href="#">付费栏目</a></li>
+                <li><a href="#">Mtrix</a></li>
+                <li><a href="#">专题广场</a></li>
+                <li><a href="#">热门文章</a></li>
+                <li class="active"><a href="#">应用推荐</a></li>
+                <li><a href="#">生活方式</a></li>
+                <li><a href="#">新玩意</a></li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div class="centerblock container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="leftcard">
+                <div style="width: 100%;float: left">
+                    <img class="img-thumbnail img-circle" src="logo.png">
+                    <span style="font-size: 15px">
+                        FFFF
+                    </span>
+
+                </div>
+                <span class="carddate">
+                    8月6
+                </span>
+                <div class="cardconent">
+                    <span>
+                        <b>对产品和设计的热爱，让他打造出了这款 iOS 上的精美倒数日工具：专访 Time | 幕后</b>
+                    </span>
+                    <span style="display: block;margin-top: 30px;font-size: 18px">
+                        为了找到一款符合自己使用习惯的倒数日工具，Jony 开发了 Time 时间卡这款设计精美的 iOS 倒数日工具。本期幕后少数派就和开发者 Jony 聊了聊 Time 的设计思路，以及他对产品和设计的思考。
+                    </span>
+
+                </div>
+                <div style="float: right">
+                    <img src="logo.png" style="margin-top: -180px;margin-right: 30px;width: 180px;height: 110px ">
+                </div>
+                <div class="cardcomment">
+                    <i class="glyphicon glyphicon-heart-empty "> </i>
+                    <span id="likenumber">12</span>
+                    <i class="glyphicon glyphicon-comment"></i>
+                    <span id="commentnumber">12</span>
+                </div>
+            </div>
+
+            <!--<div class="leftcard" th:each="card:${cardList}">-->
+            <!--<div style="width: 100%;float: left">-->
+            <!--<img class="img-thumbnail img-circle" src="logo.png" >-->
+            <!--<span style="font-size: 15px" th:text="${card.name}">-->
+
+            <!--</span>-->
+
+            <!--</div>-->
+            <!--<span class="carddate" th:text="${card.date}">-->
+            <!--8月6-->
+            <!--</span>-->
+            <!--<div class="cardconent">-->
+            <!--<span>-->
+            <!--<b th:text="${card.title}"></b>-->
+            <!--</span>-->
+            <!--<span style="display: block;margin-top: 30px;font-size: 18px" th:text="${card.content}">-->
+            <!--</span>-->
+
+            <!--</div>-->
+            <!--<div style="float: right">-->
+            <!--<img src="logo.png" style="margin-top: -180px;margin-right: 30px;width: 180px;height: 110px ">-->
+            <!--</div>-->
+            <!--<div class="cardcomment">-->
+            <!--<i class="glyphicon glyphicon-heart-empty "> </i>-->
+            <!--<span id="likenumber1" th:></span>-->
+            <!--<i class="glyphicon glyphicon-comment"></i>-->
+            <!--<span id="commentnumber1">12</span>-->
+            <!--</div>-->
+            <!--</div>-->
+
+
+        </div>
+        <div class="col-md-4">
+            <dl style="text-align: center">
+                <dt style="font-size: 16px;margin-left: -230px">推荐专题</dt>
+                <dd>
+                    <div class="rightcard">
+                        <img src="logo.png">
+                        <h3>跑步好搭档</h3>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;查看专题&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
